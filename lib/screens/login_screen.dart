@@ -15,6 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomPadding: false,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -24,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Hero(
               tag: 'logo',
               child: Container(
-                height: 200.0,
+                height: 100.0,
                 child: Image.asset('images/logo.png'),
               ),
             ),
