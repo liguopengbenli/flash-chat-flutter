@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 final _firestore = FirebaseFirestore.instance;
 
 class ChatScreen extends StatefulWidget {
-  static String id = 'chat_screen';
+  static const String id = 'chat_screen';
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
