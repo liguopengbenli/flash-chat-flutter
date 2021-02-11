@@ -36,14 +36,6 @@ class _ChatScreenState extends State<ChatScreen> {
     getCurrentUser();
   }
 
-  void messageStream() async {
-    await for (var snapshot in _firestore.collection('messages').snapshots()) {
-      for (var message in snapshot.docs) {
-        print(message.data().cast());
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +45,6 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
               icon: Icon(Icons.close),
               onPressed: () {
-                //messageStream();
                 _auth.signOut();
                 Navigator.pop(context);
               }),
@@ -117,7 +108,7 @@ class MessageStream extends StatelessWidget {
             ),
           );
         }
-        final messages = snapshot.data.docs;
+        final messages = snapshot.data.docs.reversed;
         List<MessageBuddle> messageWidgets = [];
         for (var message in messages) {
           final messageData = message.data();
@@ -134,6 +125,7 @@ class MessageStream extends StatelessWidget {
         }
         return Expanded(
           child: ListView(
+            reverse: true,
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             children: messageWidgets,
           ),
